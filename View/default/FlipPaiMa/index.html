@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<style type="text/css">
+      *{
+			margin:0;
+			padding:0;
+        }
+		body{
+			background:#252a40;
+		}
+		.activity {
+		text-align:center;
+		width: 40%;
+		}
+		img{width:100%}
+		.matchTop {
+		margin-top:1rem;
+		width: 100%;
+		padding: 0 2.6rem;
+		box-sizing: border-box;
+		position:relative;
+		    height: 9rem;
+		-webkit-box-sizing: border-box;}
+		.matchTop dt {
+		-webkit-box-flex: 1;
+		-moz-box-flex: 1;
+		-ms-box-flex: 1;
+		-o-box-flex: 1;
+		text-align: left;
+		max-width: 4rem;
+		min-width: 4rem;
+		margin-bottom: 1.5rem;
+		position: absolute;
+		left: 50%;
+		margin-left: -2.5rem;
+		}
+		.matchTop dt img {
+		width: 5rem;
+		height: 5rem;
+		border-radius: 50%;
+		-webkit-border-radius: 50%;
+		-moz-border-radius: 50%;
+		-ms-border-radius: 50%;
+		-o-border-radius: 50%;
+		border: 2px solid #fff;
+	}
+	.matchTop dd {
+		 -webkit-box-flex: 3;
+		-moz-box-flex: 3;
+		-ms-box-flex: 3;
+		-o-box-flex: 3;
+		min-width: 14rem;
+		/* padding-left: 2.6rem; */
+		/* font-size: 16px; */
+		/* padding: .8rem 0 .8rem 2.6rem; */
+		text-align: center;
+		/* position: absolute; */
+		padding-top: 6rem;
+	}
+	.matchTop dd span {
+		display: block;
+		margin-bottom: 1rem;
+		color: #fff;
+	}
+	.jiheCode {
+		width: 100%;
+		padding:0;
+	}
+	.jiheCodeInfo {
+		width: 19.4rem;
+		margin: 0 auto;
+	}
+	.pic h1 {
+		width:100%;
+		top:0;
+		position:absolute;
+		height: 3rem;
+		line-height: 2.4rem;
+		text-align: center;
+		font-size: 1.1rem;
+		color: #000;
+	}
+	.pic {
+		width:80%;
+		position:relative;
+		top:50%;
+		left:10%;
+		background: url() 0 0 no-repeat;
+		-webkit-background-size: contain;
+		background-size: contain;
+	}
+	.jiheCodeNumBtn {
+		position:absolute;
+		width:100%;
+		top:40%;
+		text-align: center;
+		color: #d71e16;
+		font-size: 2.5rem;
+	}
+	.fanpai{
+		width:80%;
+		height:11rem;
+		background:url(http://odu8uq4zl.bkt.clouddn.com/fanpai.png) no-repeat top left;
+		background-size:100% 100%;
+		margin-left:10%;
+		margin-bottom:5%;
+		position:relative;
+		margin-top:5%;
+	}
+	.fanpaiul{
+		position:absolute;
+		width:90%;
+			top: 25%;
+		left: 5%;
+		perspective: 1200px; /* 透视视图 */
+	}
+	.fanpaili{
+		width:31%;
+		position:absolute;
+		list-style:none;
+	}
+	.fanpaili img{
+		width:100%
+	}
+	#fanpaili2{
+		left:34%
+	}
+	#fanpaili3{
+		left:69%
+	}
+	.tips{
+		width:80%;
+		margin-left:10%;
+		font-size:1rem;
+		color:white;
+		margin-bottom:5%;
+	}
+	.tan{
+		position:fixed;
+		z-index:200;
+		width:100%;
+		height:100%;
+		top:0;
+		background:rgba(0,0,0,.5);
+		display:none;
+	}
+	.fan{
+		transform-style: preserve-3d; /* 3D 转换 */
+		-webkit-animation:2s ease fan; /* 转换效果持续 1秒 */
+	}
+	.jiheCode2,.jiheCode3{
+		display:none
+	}
+    </style>
+</head>
+<body>
+	<img src="http://oaldjru1i.bkt.clouddn.com/jiudianbanner.jpg" alt="">
+	<dl class="matchTop">
+        <dt><img src="{$info.headimgurl}" data-tag="headimgurl"></dt>
+        <dd>
+            <span>昵称：<i data-tag="nickname">{$info.nickname}</i></span>
+            <!--<span>手机：<i data-tag="mobile">{$user['phone']}</i></span>-->
+        </dd>
+    </dl>
+	<div class="jiheCode">
+            <div class="pic">
+				<img style="width:100%;" src="http://odu8uq4zl.bkt.clouddn.com/titlebg.png">
+				 <h1>我的抽奖码</h1>
+				 <div class="jiheCodeNumBtn">{$code[1]}</div>
+			</div>
+    </div>
+	<div class="jiheCode2">
+            <div class="pic">
+				<img style="width:100%;" src="http://odu8uq4zl.bkt.clouddn.com/titlebg.png">
+				 <h1>我的抽奖码</h1>
+				 <div class="jiheCodeNumBtn">{$code[2]}</div>
+			</div>
+    </div>
+	<div class="jiheCode3">
+            <div class="pic">
+				<img style="width:100%;" src="http://odu8uq4zl.bkt.clouddn.com/titlebg.png">
+				 <h1>我的抽奖码</h1>
+				 <div class="jiheCodeNumBtn">{$code[3]}</div>
+			</div>
+    </div>
+	<div class="fanpai">
+		<ul class="fanpaiul">
+			<li class="fanpaili" id="fanpaili1">
+				<img src="http://odu8uq4zl.bkt.clouddn.com/fanpai1.jpg">
+			</li>
+			<li class="fanpaili" id="fanpaili2">
+				<img src="http://odu8uq4zl.bkt.clouddn.com/2.png">
+			</li>
+			<li class="fanpaili" id="fanpaili3">
+				<img src="http://odu8uq4zl.bkt.clouddn.com/3.png">
+			</li>
+		</ul>
+	</div>
+	<div class="tips">
+		<p>温馨提示</p>
+	</div>
+	<div class="tan">
+		<div style='width:70%;position:absolute;top:20%;left:15%'>
+			<img src="http://odu8uq4zl.bkt.clouddn.com/tips.png">
+			<p  id="name" style="position:absolute;font-weight:bold;color:white;width:80%;top:4%;left:10%;line-height:1.2rem"><p>
+			<img id="erweima" style="position:absolute;width:60%;top:40%;left:20%" src="">
+		</div>
+	</div>
+</body>
+<script src="http://cdn.bootcss.com/jquery/3.1.0/jquery.min.js"></script>
+<script src="http://odu8uq4zl.bkt.clouddn.com/jquery-ui.min.js"></script>
+<script>
+	var limit = {$limit};
+	var flipcount = {$flipcount};
+    var num = "";
+	var json = "";
+	var picList = "";
+	/*var name1 = picList[0]["wechat"];
+	var pic1 = "http://addon.gzbaishitong.com/attachment/"+picList[0]["erweima"];*/
+	var name2 = "广州平靓正";
+	var pic2 = "http://oaldjru1i.bkt.clouddn.com/20812425619350830.jpg";
+	var name3 = "旅行极客";
+	var pic3 = "http://oaldjru1i.bkt.clouddn.com/434742394870554374.jpg";
+	
+	var fanpai = function(){
+		var oPic = "http://odu8uq4zl.bkt.clouddn.com/fan.png";
+		var fanpaili1 = $("#fanpaili1 img").attr("src");
+		var fanpaili2 = $("#fanpaili2 img").attr("src");
+		var fanpaili3 = $("#fanpaili3 img").attr("src");
+		
+		function second(){
+			$('#fanpaili2').on("click",function(){
+			   $(this).addClass('fan');
+			   $(this).children('img').attr('src',"http://oaldjru1i.bkt.clouddn.com/fanpai2.jpg")
+			   $("#name").html("请长按二维码，关注【"+name2+"】公众号，点击【领取抽奖码】领取多一个抽奖码");
+			   $("#erweima").attr("src",pic2)
+				$(".tan").show("fast");
+			   $(".tan").click(function(){
+					$('#fanpaili2').removeClass('fan')
+					$(this).hide("fast");
+					$("#fanpaili2 img").attr("src","http://odu8uq4zl.bkt.clouddn.com/2.png")
+				})
+			});
+		}
+			
+		function third(){
+			$('#fanpaili3').on("click",function(){
+				$(this).addClass('fan');
+				$(this).children('img').attr('src',"http://oaldjru1i.bkt.clouddn.com/fanpai3.jpg")
+				$("#name").html("请长按二维码，关注【"+name3+"】公众号，点击【领取抽奖码】领取多一个抽奖码");
+				$("#erweima").attr("src",pic3)
+				$(".tan").show("fast");
+				$(".tan").click(function(){
+					$('#fanpaili3').removeClass('fan')
+					$(this).hide("fast");
+					$("#fanpaili3 img").attr("src","http://odu8uq4zl.bkt.clouddn.com/3.png")
+				})
+			});
+		}
+		
+		if(limit == 1){
+			second();
+			third()
+		}else if(flipcount == 2 && limit ==2){
+			$(".jiheCode2").show()
+			 $("#fanpaili2").children('img').attr('src',"http://odu8uq4zl.bkt.clouddn.com/2.png");
+			 third();
+		}else if(flipcount == 2 && limit ==3){
+			$(".jiheCode2").show()
+			 $("#fanpaili3").children('img').attr('src',"http://odu8uq4zl.bkt.clouddn.com/3.png");
+			 second();
+		}else if(flipcount == 3){
+			$(".jiheCode2").show()
+			$(".jiheCode3").show()
+			 $("#fanpaili3").children('img').attr('src',"http://odu8uq4zl.bkt.clouddn.com/3.png");
+			  $("#fanpaili2").children('img').attr('src',"http://odu8uq4zl.bkt.clouddn.com/2.png");
+		}
+	}
+	fanpai()
+	/*if(num == 1){
+	    var name = picList[0]["wechat"];
+		var erweima = "http://addon.gzbaishitong.com/attachment/"+picList[0]["erweima"];
+		$('#fanpaili1').on("click",function(){
+			$(".tan").css("display","block")
+		});
+		$("#name").html("请长按二维码，关注【"+name+"】公众号，点击【领取抽奖码】领取多一个抽奖码");
+		$("#erweima").attr("src",erweima)
+	}else if(num == 2){
+		$("#fanpaili1 img").attr("src","../addons/bst_paima/template/mobile/1.png")
+		 var name = picList[1]["wechat"];
+		var erweima = "http://addon.gzbaishitong.com/attachment/"+picList[1]["erweima"];
+		$('#fanpaili2').on("click",function(){
+			$(".tan").css("display","block")
+		});
+		$("#name").html("请长按二维码，关注【"+name+"】公众号，点击【领取抽奖码】领取多一个抽奖码");
+		$("#erweima").attr("src",erweima)
+	}else if(num == 3){
+		$("#fanpaili1 img").attr("src","../addons/bst_paima/template/mobile/1.png")
+		$("#fanpaili2 img").attr("src","../addons/bst_paima/template/mobile/2.png")
+		 var name = picList[2]["wechat"];
+		var erweima = "http://addon.gzbaishitong.com/attachment/"+picList[2]["erweima"];
+		$('#fanpaili3').on("click",function(){
+			$(".tan").css("display","block")
+		});
+		$("#name").html("请长按二维码，关注【"+name+"】公众号，点击【领取抽奖码】领取多一个抽奖码");
+		$("#erweima").attr("src",erweima)
+	}*/
+</script>
+</body>
+</html>

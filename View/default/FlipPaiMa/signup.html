@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no"
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-touch-fullscreen" content="yes">
+    <meta name="format-detection" content="telephone=no,email=no">
+    <script src="http://7xav7v.com2.z0.glb.qiniucdn.com/201631%2Fjs%2Fscale.min.js"></script>
+	<link href="http://odu8uq4zl.bkt.clouddn.com/main.css" rel="stylesheet">
+    <style type="text/css">
+		
+        html,body{
+            width:100%;height:100%;
+			margin:0;
+			padding:0
+        }
+
+        body {
+			overflow:hidden;
+			position:absolute;
+			top:0;
+			background:url(http://oaldjru1i.bkt.clouddn.com/sijibg.jpg) no-repeat;
+			background-size:100% 100%;
+        }
+
+        .fixed-full-width {
+            width: 7.5rem;
+            right: 0;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .qrcode {
+            width: 60%;
+        }
+        #activity__btn__apply{
+            width: 55%;
+			height: 0.8rem;
+			background: url(http://oaldjru1i.bkt.clouddn.com/lijicanyu.png) no-repeat;
+			background-size: 100% 100%;
+			color: #fff;
+			text-align: center;
+			letter-spacing: .2rem;
+			font-size: 0.3rem;
+			margin-top: 1.1rem;
+        }
+        .line{
+            width:100%;
+            margin-bottom:0.6rem
+        }
+		#zhuanfa{
+			position:fixed;
+			top:0;left:0;
+			width:100%;height:100%;
+			background:url(http://oaldjru1i.bkt.clouddn.com/jiudianzhuanfa.jpg) no-repeat;background-size:100% 100%;
+			display:none
+		}
+		#erweima{
+			position:fixed;
+			width:100%;
+			height:100%;
+			background:rgba(0,0,0,.6);
+			top:0;
+			display:none
+		}
+		#erweima .img{
+			width:60%;
+			position:absolute;
+			top:30%;
+			left:20%;
+		}
+		#erweima p{
+			width:60%;
+			position:absolute;
+			top:25%;
+			left:20%;
+			text-align:center;
+			color:#fff
+		}
+		.activity__input, .activity__btn__apply {
+			width: 100%;
+			margin: .3rem auto;
+			overflow: hidden;
+			border: 1px solid transparent
+		}
+		.activity__input__number {
+			width: 90%;
+			margin-left: 5%;
+			height: 0.8rem;
+			box-sizing: border-box;
+			font-size: 0.3rem;
+			outline: 0;
+			-webkit-appearance: none;
+			padding: .22rem .14rem;
+			border: 0;
+			background: #cfd0d2;
+			line-height: .36rem;
+			color: black;
+			text-align: center;
+			outline: none;
+			border: 0px solid transparent;
+		}
+		input::-webkit-input-placeholder {
+	　　color: black !important; /* WebKit browsers /
+	　　}
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/zepto/1.1.6/zepto.min.js"></script>
+    <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+    <script>
+        wx.config({
+            debug: false,
+            appId: '{$signPackage["appId"]}',
+            timestamp: '{$signPackage["timestamp"]}',
+            nonceStr: '{$signPackage["nonceStr"]}',
+            signature: '{$signPackage["signature"]}',
+            jsApiList: [
+                'onMenuShareTimeline','onMenuShareAppMessage'
+            ]
+        });
+        $(function(){
+            wx.ready(function () {
+                //分享到朋友圈
+                wx.onMenuShareTimeline({
+                    title: '派码测试', // 分享标题
+                    link: "",// 分享链接
+                    imgUrl: '', // 分享图标
+                    success: function () {
+						$("#zhuanfa").css("display","none");
+						$("#erweima").css("display","block")
+                    },
+                    cancel: function () {
+
+                        // 用户取消分享后执行的回调函数
+                    }
+                });
+                //分享给朋友
+                wx.onMenuShareAppMessage({
+                    title: '测试', // 分享标题
+                    desc: '只有分享到朋友圈才有用哦', // 分享描述
+                    link: "",// 分享链接
+                    imgUrl: '', // 分享图标
+                    type: '', // 分享类型,music、video或link，不填默认为link
+                    dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
+                    success: function () {
+                        // 用户确认分享后执行的回调函数
+						alert("要分享到朋友圈才能获得抽奖码噢")
+                    },
+                    cancel: function () {
+                        // 用户取消分享后执行的回调函数
+                    }
+                });
+            })
+            $('#activity__btn__apply').on('click', function() {
+                var tel = $("#activity__input__number").val();
+                if(tel==''){
+                    alert("请先输入手机号码");
+                    return;
+                }else if(!(/^1[34578]\d{9}$/.test(tel))){
+					alert("手机号码有误，请重填"); 
+					return; 
+				}
+                $.ajax({
+                    type:"post",
+                    url:"{:U('signup')}",
+                    data:{
+                        tel:tel
+                    },
+                    success:function(re){
+                        if(re.status==1)
+                        {
+                            $("#zhuanfa").css("display","block")
+                        }
+                    },
+                    error:function(){
+                        alert('操作失败');
+                    }
+                })
+            })
+        })
+    </script>
+</head>
+<body>
+<section class="activity" id="activity" style="margin-bottom: 10px;">
+    <img class="line" src="" alt="">
+    <p class="activity__input">
+        <input type="tel" id="activity__input__number" class="activity__input__number" placeholder="请输入您的手机号码" >
+    </p>
+    <!--<p class="activity__top">PS:如果你中奖，我们将通过电话号码与你联系，请认真填写</p>-->
+    <p class="activity__btn">
+        <a href="javascript:void(0);" id="activity__btn__apply" class="activity__btn__apply"></a>
+    </p>
+</section>
+<section id="zhuanfa">
+</section>
+<section id="erweima">
+	<p>长按二维码，进入公众号领取抽奖码</p>
+	<div class="img">
+		<img src="http://oaldjru1i.bkt.clouddn.com/827043154875723968.jpg" style="width:100%">
+	</div>
+</section>
+</body>
+</html>
